@@ -10,7 +10,7 @@
   ],
   "background": {
     "scripts": ["pfu_contextmenu.js"],
-    "persistent": true
+    "persistent": false
   },
   "content_scripts": [
     {
