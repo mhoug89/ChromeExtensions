@@ -1,0 +1,23 @@
+{
+  "name": "HouglumDev Page Fixer",
+  "description": "Fixes unwanted content and effects on sites I frequently visit.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["pfu_contextmenu.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://dayzdb.com/*"
+      ],
+      "js": ["pfu.js"]
+    }
+  ]
+}
