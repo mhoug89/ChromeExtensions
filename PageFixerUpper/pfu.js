@@ -39,7 +39,7 @@ pfu.sites['dayzdb.com'] = new pfu.Site(function() {
   // full width of the page by setting its margin-right to 0 (default is at
   // 301px) and deleting the 'sidebar' DIV.  This is especially helpful when
   // viewing the map on a vertically oriented monitor.
-  if (docLoc.indexOf('http://dayzdb.com/map/chernarusplus') === 0) {
+  if (docLoc.indexOf('://dayzdb.com/map/chernarusplus') !== -1) {
     var mapContainerEl = document.getElementById('mapContainer');
     var sideBarEl = document.getElementById('sidebar');
     sideBarEl.remove();
@@ -55,9 +55,9 @@ pfu.sites['dayzdb.com'] = new pfu.Site(function() {
   // Get the second-level domain, e.g. for "subdomain.herp.derp.com" we get
   // try "derp.com".
   var siteName = document.location.hostname.split('.').slice(-2).join('.');
-  var enabledDict = {};
-  enabledDict[siteName] = true;
   if (pfu.sites.hasOwnProperty(siteName)) {
+    var enabledDict = {};
+    enabledDict[siteName] = true;
     chrome.storage.sync.get(enabledDict, function(enabledStatus) {
       if (enabledStatus[siteName] === true) {
         pfu.sites[siteName].fix();
