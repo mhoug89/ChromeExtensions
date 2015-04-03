@@ -47,23 +47,19 @@ pfu.sites['dayzdb.com'] = new pfu.Site(function() {
   }
 });
 
-/**
- * Determine the site we're on. If the hostname is a key in our sites object
- * and that Site's not been disabled in this extension, call its fix() method.
- */
-(function() {
-  // Get the second-level domain, e.g. for "subdomain.herp.derp.com" we get
-  // try "derp.com".
-  var siteName = document.location.hostname.split('.').slice(-2).join('.');
-  if (pfu.sites.hasOwnProperty(siteName)) {
-    var enabledDict = {};
-    enabledDict[siteName] = true;
-    chrome.storage.sync.get(enabledDict, function(enabledStatus) {
-      if (enabledStatus[siteName] === true) {
-        pfu.sites[siteName].fix();
-      } else {
-        console.log('PFU: ' + siteName + ' disabled.');
-      }
-    });
-  }
-})();
+// Get the second-level domain, e.g. for "subdomain.herp.derp.com" we get
+// "derp.com".
+var siteName = document.location.hostname.split('.').slice(-2).join('.');
+// If the hostname is a key in our sites object and that Site's not been
+// disabled in this extension, call its fix() method.
+if (pfu.sites.hasOwnProperty(siteName)) {
+  var enabledDict = {};
+  enabledDict[siteName] = true;
+  chrome.storage.sync.get(enabledDict, function(enabledStatus) {
+    if (enabledStatus[siteName] === true) {
+      pfu.sites[siteName].fix();
+    } else {
+      console.log('PFU: ' + siteName + ' disabled.');
+    }
+  });
+}
