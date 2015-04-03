@@ -1,8 +1,14 @@
 {
-  "name": "HouglumDev Page Fixer",
+  "name": "HouglumDev Page Fixer Upper",
   "description": "Fixes unwanted content and effects on sites I frequently visit.",
   "version": "0.1",
   "manifest_version": 2,
+  "icons": {
+    "16": "pfu16.png",
+    "32": "pfu32.png",
+    "48": "pfu48.png",
+    "128": "pfu128.png"
+  },
   "permissions": [
     "contextMenus",
     "storage",
